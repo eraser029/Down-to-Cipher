@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "name": "Down to Cipher",
+  "launch_path": "/index.html",
+  "description": "An application with a counter that you bring down to Cipher.",
+  "icons": {
+    "60": "/img/touch/touch-icon-60x60.png",
+    "128": "/img/touch/touch-icon-128x128.png"
+  },
+  "developer": {
+    "name": "Ashish Sharma",
+    "url": "https://github.com/eraser029"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "Down to Cipher",
+      "description": "An application with a counter that you bring down to Cipher."
+    }
+  }
+}
