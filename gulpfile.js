@@ -92,7 +92,7 @@ gulp.task('html', function () {
     return gulp.src('app/**/*.html')
         .pipe($.useref.assets({searchPath: '{.tmp,app}'}))
         // Concatenate And Minify JavaScript
-        .pipe($.if('*.js', $.uglify()))
+        //.pipe($.if('*.js', $.uglify()))
         // Concatenate And Minify Styles
         .pipe($.if('*.css', $.csso()))
         // Remove Any Unused CSS
@@ -104,7 +104,7 @@ gulp.task('html', function () {
         // Update Production Style Guide Paths
         .pipe($.replace('components/components.css', 'components/main.min.css'))
         // Minify Any HTML
-        .pipe($.minifyHtml())
+        //.pipe($.minifyHtml())
         // Output Files
         .pipe(gulp.dest('dist'))
         .pipe($.size({title: 'html'}));

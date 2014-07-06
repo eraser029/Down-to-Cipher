@@ -42,7 +42,7 @@
             closeMenu();
         }
     });
-    // Angular JS related
+    
     /*global angular */
     angular.module('CounterModule', [])
         .filter('filterOutHistoryItemColorClass', function () {
@@ -97,7 +97,7 @@
                     $scope.reduceValue = reduceCounterVal;
                     $scope.counter -= reduceCounterVal;
 
-                    //Make a history entry
+                    /*Make a history entry*/
                     $scope.appendToHistory('REDUCED', 'Counter reduced by *' + reduceCounterVal + '* on ' + new Date() + '.');
 
                     if ($scope.counter <= 0) {
@@ -107,7 +107,7 @@
                 };
 
                 $scope.celebrate = function () {
-                    //Make a history entry
+                    /*Make a history entry*/
                     $scope.appendToHistory('CIPHERED', 'YAAAY! Counter successfully ciphered on ' + new Date() + '.');
                 };
 
@@ -116,7 +116,7 @@
                     if ($scope.titleValue.length > TITLE_LENGTH_LIMIT) {
                         $scope.titleValue = $scope.titleValue.substring(0, TITLE_LENGTH_LIMIT);
                     }
-                    //Make a history entry
+                    /*Make a history entry*/
                     $scope.appendToHistory('TITLE', 'Title changed to *' + $scope.titleValue + '* on ' + new Date() + '.');
                     $scope.title = $scope.titleValue;
                     document.title = $scope.titleValue + ' : Down to Cipher';
@@ -140,7 +140,7 @@
                         console.log('Could not reset to input , input is not proper integer');
                         resetCounterVal = 0;
                     }
-                    //Make a history entry
+                    /*Make a history entry*/
                     $scope.appendToHistory('RESET', 'Counter reset to *' + resetCounterVal + '* on ' + new Date() + '.');
                     $scope.resetValue = resetCounterVal;
                     $scope.counter = resetCounterVal;
