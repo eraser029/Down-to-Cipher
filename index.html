@@ -1,7 +1,117 @@
-<!doctype html><html ng-app=CounterModule><head><meta charset=utf-8><meta name=description content="An application with a counter that you bring down to Cipher."><meta name=viewport content="width=device-width, initial-scale=1, minimal-ui"><title>Down to Cipher</title><meta name=mobile-web-app-capable content=yes><link rel=apple-touch-icon-precomposed sizes=144x144 href=images/touch/apple-touch-icon-144x144-precomposed.png><link rel=apple-touch-icon-precomposed sizes=114x114 href=images/touch/apple-touch-icon-114x114-precomposed.png><link rel=apple-touch-icon-precomposed sizes=72x72 href=images/touch/apple-touch-icon-72x72-precomposed.png><link rel=apple-touch-icon-precomposed href=images/touch/apple-touch-icon-57x57-precomposed.png><meta name=msapplication-TileImage content=images/touch/ms-touch-icon-144x144-precomposed.png><meta name=msapplication-TileColor content=#3372DF><link rel="shortcut icon" href=images/touch/touch-icon-57x57.png><link rel="shortcut icon" sizes=196x196 href=images/touch/touch-icon-196x196.png><link rel=stylesheet href=styles/components/main.min.css></head><body ng-controller=CounterCtrl><header class="app-bar promote-layer"><div class=app-bar-container><button class=menu><img src=images/hamburger.svg></button><h1 class=logo>{{title}}</h1><section class=app-bar-actions><a class=button href=./about.html>About</a></section></div></header><nav class="navdrawer-container promote-layer"><h4>Navigation</h4><ul><li><a href=#counter>Counter</a></li><li><a href=#history>History</a></li></ul></nav><main><br><section class=color--performance><div class="g--third g--centered g--last"><h1 class="make-me-center counter">{{counter}}</h1></div></section><section><div class="g--third make-me-center"><a class="button--primary counter-action-button" ng-click=changeTheTitle();>Change Title</a><input style=color:black; ng-model=titleValue value=0 type=text></div><div class="g--third make-me-center"><a class="button--primary counter-action-button" ng-click=resetTheCounter();>Reset Count</a><input style=color:black; ng-model=resetValue value=0 type=text></div><div class="g--third g--last make-me-center"><a class="button--primary counter-action-button" ng-click=reduceTheCounter();>Reduce By</a><input style=color:black; ng-model=reduceValue value=0 type=text></div></section><br><h2 id=history>History.</h2><p>Latest on top.</p><section><ul><li ng-repeat="item in history" class="{{item.type | filterOutHistoryItemColorClass}}">{{item.value}}</li></ul></section></main><script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js></script><script src=scripts/main.min.js></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<!doctype html>
+<html ng-app="CounterModule">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="An application with a counter that you bring down to Cipher.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Down to Cipher</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- iOS icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/touch/apple-touch-icon-57x57-precomposed.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- Generic Icon -->
+    <link rel="shortcut icon" href="images/touch/touch-icon-57x57.png">
+
+    <!-- SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+        <link rel="canonical" href="http://www.example.com/">
+        -->
+
+    <!-- Chrome Add to Homescreen -->
+    <link rel="shortcut icon" sizes="196x196" href="images/touch/touch-icon-196x196.png">
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <!--
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="">
+        -->
+
+    <link rel="stylesheet" href="styles/components/main.min.css">
+</head>
+
+<body ng-controller="CounterCtrl">
+    <header class="app-bar promote-layer">
+        <div class="app-bar-container">
+            <button class="menu">
+                <img src="images/hamburger.svg">
+            </button>
+            <h1 class="logo">{{title}}</h1>
+            <section class="app-bar-actions">
+                <!-- Put App Bar Buttons Here -->
+                <a class="button" href="./about.html">About</a>
+            </section>
+        </div>
+    </header>
+
+    <nav class="navdrawer-container promote-layer">
+        <h4>Navigation</h4>
+        <ul>
+            <li><a href="#counter">Counter</a>
+            </li>
+            <li><a href="#history">History</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <br/>
+        <section class="color--performance">
+            <div class="g--third g--centered g--last">
+                <h1 class="make-me-center counter">{{counter}}</h1>
+            </div>
+        </section>
+        <section>
+            <div class="g--third make-me-center">
+                <a class="button--primary counter-action-button" ng-click="changeTheTitle();">Change Title</a>
+                <input style="color:black;" ng-model="titleValue" value="0" type="text" />
+            </div>
+            <div class="g--third make-me-center">
+                <a class="button--primary counter-action-button" ng-click="resetTheCounter();">Reset Count</a>
+                <input style="color:black;" ng-model="resetValue" value="0" type="text" />
+            </div>
+            <div class="g--third g--last make-me-center">
+                <a class="button--primary counter-action-button" ng-click="reduceTheCounter();">Reduce By</a>
+                <input style="color:black;" ng-model="reduceValue" value="0" type="text" />
+            </div>
+        </section>
+        <br/>
+        <h2 id="history">History.</h2><p>Latest on top.</p>
+        <section>
+            <ul>
+                <li ng-repeat="item in history" class="{{item.type | filterOutHistoryItemColorClass}}">{{item.value}}</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- library imports -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+
+    <script src="scripts/main.min.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-5644230-5', 'auto');
-      ga('send', 'pageview');</script></body></html>
+      ga('send', 'pageview');
+
+    </script>
+    <!-- Built with love using Web Starter Kit -->
+</body>
+
+</html>
