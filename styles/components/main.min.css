@@ -1358,7 +1358,6 @@ li>p {
   padding-top: 0;
 }
 
-.button,
 .button--primary,
 .button--secondary,
 .button--secondary-variation {
@@ -1375,7 +1374,6 @@ li>p {
   transition: none;
 }
 
-.button:hover,
 .button--primary:hover,
 .button--secondary:hover,
 .button--secondary-variation:hover {
